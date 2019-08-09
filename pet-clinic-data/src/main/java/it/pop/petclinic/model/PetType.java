@@ -1,4 +1,4 @@
 package it.pop.petclinic.model;
 
-public class PetType {
+public class PetType extends BaseEntity {
 }
