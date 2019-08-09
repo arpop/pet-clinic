@@ -1,4 +1,4 @@
-package main.java.it.pop.petclinic.model;
+package main.java.model;
 
 public class Person {
     private String firstName;
