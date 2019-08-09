@@ -41,6 +41,6 @@
 		</plugins>
 	</build>
 	<scm>
-		<developerConnection>https://github.com/arpop/pet-clinic.git</developerConnection>
+		<developerConnection>scm:git:git@github.com:arpop/pet-clinic.git</developerConnection>
 	</scm>
 </project>
