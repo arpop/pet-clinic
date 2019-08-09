@@ -4,7 +4,7 @@
 	<packaging>pom</packaging>
 	<artifactId>pet-clinic</artifactId>
 	<groupId>it.pop</groupId>
-	<version>0.0.1</version>
+	<version>0.0.2-SNAPSHOT</version>
 	<name>pet-clinic</name>
 	<description>Demo project for Spring Boot</description>
 
@@ -41,6 +41,6 @@
 	</build>
 	<scm>
 		<developerConnection>scm:git:git@github.com:arpop/pet-clinic.git</developerConnection>
-	  <tag>pet-clinic-0.0.1</tag>
+	  	<tag>pet-clinic-0.0.2-SNAPSHOT</tag>
   </scm>
 </project>
