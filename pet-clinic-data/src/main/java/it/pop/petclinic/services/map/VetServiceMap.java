@@ -2,10 +2,11 @@ package it.pop.petclinic.services.map;
 
 import it.pop.petclinic.model.Vet;
 import it.pop.petclinic.services.CrudService;
+import it.pop.petclinic.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet, Long> implements CrudService<Vet, Long> {
+public class VetServiceMap extends AbstractMapService<Vet, Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
@@ -30,5 +31,12 @@ public class VetServiceMap extends AbstractMapService<Vet, Long> implements Crud
     @Override
     public Vet findById(Long id) {
         return super.findById(id);
+    }
+
+    @Override
+    public Vet findByLastName(String lastName) {
+        return this.findAll().stream()
+                             .filter(v -> v.getLastName().equals(lastName))
+                             .findFirst().orElse(null);
     }
 }
