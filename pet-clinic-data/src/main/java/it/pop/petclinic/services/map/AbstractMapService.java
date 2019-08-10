@@ -1,12 +1,12 @@
 package it.pop.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import it.pop.petclinic.model.BaseEntity;
+import org.springframework.util.CollectionUtils;
 
-public abstract class AbstractMapService<T, ID> {
-    protected Map<ID, T> map = new HashMap<>();
+import java.util.*;
+
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+    protected Map<Long, T> map = new HashMap<>();
 
     Set<T> findAll() {
         return new HashSet<>(map.values());
@@ -16,8 +16,16 @@ public abstract class AbstractMapService<T, ID> {
         return map.get(id);
     }
 
-    T save(ID id, T entity) {
-        map.put(id, entity);
+    T save(T entity) {
+
+        if (Objects.nonNull(entity)){
+            if(Objects.isNull(entity.getId())) {
+                entity.setId(getNextId());
+            }
+        } else {
+            throw new RuntimeException("Entity to save cannot be null");
+        }
+        map.put(entity.getId(), entity);
         return entity;
     }
 
@@ -27,5 +35,12 @@ public abstract class AbstractMapService<T, ID> {
 
     void delete(T entity) {
         map.entrySet().removeIf(entry -> entry.getValue().equals(entity));
+    }
+
+    private Long getNextId() {
+        if (CollectionUtils.isEmpty(map)) {
+            return 1L;
+        }
+        return Collections.max(map.keySet()) + 1;
     }
 }
